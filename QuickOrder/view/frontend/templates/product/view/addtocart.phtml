@@ -1,0 +1,90 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()) : ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()) : ?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                    <div class="control">
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               min="0"
+                               value="<?= $block->getProductDefaultQty() * 1 ?>"
+                               title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
+                               class="input-text qty"
+                               data-validate="<?= $block->escapeHtmlAttr(json_encode($block->getQuantityValidators())) ?>"
+                        />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button" disabled>
+                    <span><?= $block->escapeHtml($buttonTitle) ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+            <div class="actions">
+                <button type="button"
+                        title="Quick Order"
+                        class="action primary tocart"
+                        id="quick-order-button">
+                    Quick Order
+                </button>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "ALevel_QuickOrder/js/components/send-info": {}
+        }
+    }
+
+</script>
+
+<div class="modal" id="quick-order-form" style="display:none;">
+    <form id="popup-modal-info" name="customerInfo">
+        <h2>Write your information</h2>
+        <p><label for="customerName">Name: </label>
+            <input type="text" name="customerName" id="customerName" placeholder="Your name" max="32" required></p>
+        <p><label for="customerPhone">Phone: </label>
+            <input type="text" name="phone" id="customerPhone" placeholder="Your phone" max="20" required></p>
+        <p><label for="customerEmail">Email: </label>
+            <input type="email" name="email" id="customerEmail" placeholder="Your email" max="50" ></p>
+        <p><div id="errorMessage"></div></p>
+        <input type="text" name="productSku" id="sku" style="display: none">
+        <p>
+            <button class="action primary tocart"
+                    type="button"
+                    name="sendInfo"
+                    id="sendInfo">
+                <span>Send</span>
+            </button>
+        </p>
+    </form>
+</div>
+

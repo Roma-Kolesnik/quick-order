@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="ALevel\QuickOrder\Api\Data\OrderInterface"
+                type="ALevel\QuickOrder\Model\Order"/>
+
+    <preference for="ALevel\QuickOrder\Api\Repository\OrderRepositoryInterface"
+                type="ALevel\QuickOrder\Repository\OrderRepository"/>
+
+    <preference for="ALevel\QuickOrder\Api\Data\StatusInterface"
+                type="ALevel\QuickOrder\Model\Status"/>
+
+    <preference for="ALevel\QuickOrder\Api\Repository\StatusRepositoryInterface"
+                type="ALevel\QuickOrder\Repository\StatusRepository"/>
+
+    <virtualType name="ALevel\QuickOrder\Model\ResourceModel\Order\GridCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">alevel_quick_order</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">ALevel\QuickOrder\Model\ResourceModel\Order
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="ALevel\QuickOrder\Model\ResourceModel\Status\GridCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">alevel_quick_order_status</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">ALevel\QuickOrder\Model\ResourceModel\Status
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="order_grid_listing_data_source"
+                      xsi:type="string">ALevel\QuickOrder\Model\ResourceModel\Order\GridCollection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="status_grid_data_source"
+                      xsi:type="string">ALevel\QuickOrder\Model\ResourceModel\Status\GridCollection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

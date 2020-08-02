@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="alevel_quick_order" resource="default" engine="innodb" comment="Alevel Order">
+        <column xsi:type="int"
+                name="order_id"
+                padding="10"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Order Id"/>
+        <column xsi:type="varchar"
+                name="sku"
+                nullable="false"
+                length="40"
+                comment="SKU"/>
+        <column xsi:type="varchar"
+                name="name"
+                length="32"
+                nullable="false"
+                comment="Customer name"/>
+        <column xsi:type="varchar"
+                name="phone"
+                length="20"
+                nullable="false"
+                comment="Customer Phone"/>
+        <column xsi:type="varchar"
+                name="email"
+                length="50"
+                nullable="false"
+                comment="Customer email"/>
+        <column xsi:type="timestamp"
+                name="create_at"
+                on_update="true"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Create Time"/>
+        <column xsi:type="timestamp"
+                name="update_at"
+                on_update="true"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <column xsi:type="varchar"
+                name="status"
+                length="20"
+                nullable="false"
+                comment="Status Label"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="order_id"/>
+        </constraint>
+    </table>
+    <table name="alevel_quick_order_status" resource="default" engine="innodb" comment="Alevel Status">
+        <column xsi:type="int"
+                name="status_id"
+                padding="2"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Status Id"/>
+        <column xsi:type="varchar"
+                name="status_code"
+                length="20"
+                nullable="false"
+                comment="Status code"/>
+        <column xsi:type="varchar"
+                name="status"
+                length="20"
+                nullable="false"
+                comment="Status name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="status_id"/>
+        </constraint>
+    </table>
+</schema>

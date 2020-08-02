@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ALevel_QuickOrder::menu"
+             title="Quick Order"
+             translate="title"
+             module="ALevel_QuickOrder"
+             sortOrder="19"
+             resource="ALevel_QuickOrder::menu_list_access"/>
+
+        <add id="ALevel_QuickOrder::quick_order"
+             title="Quick Order"
+             translate="title"
+             module="ALevel_QuickOrder"
+             sortOrder="2"
+             parent="ALevel_QuickOrder::menu"
+             action="quick_order/grid/listing"
+             resource="ALevel_QuickOrder::quick_order"/>
+
+        <add id="ALevel_QuickOrder::quick_order_status"
+             title="Status Grid"
+             translate="title"
+             module="ALevel_QuickOrder"
+             sortOrder="3"
+             parent="ALevel_QuickOrder::menu"
+             action="quick_order/status/index"
+             resource="ALevel_QuickOrder::quick_order_status"/>
+
+    </menu>
+</config>
