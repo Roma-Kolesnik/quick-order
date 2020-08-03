@@ -30,7 +30,7 @@ define([
 
             let popup = modal(options, $('#quick-order-form'));
 
-            $("#quick-order-button").bind('click', function () {
+            $(".quick-order-button").bind('click', function () {
                 $("#quick-order-form").modal("openModal");
             });
 
@@ -41,7 +41,7 @@ define([
                 phone = $("#customerPhone").val();
                 phoneIsNumber = Number(phone);
                 email = $("#customerEmail").val();
-                sku = $("#product_addtocart_form").attr("data-product-sku")
+                sku = $("#product_addtocart_form").attr("data-product-sku");
 
                 if (
                     typeof (name) == "string" && name.length != 0 &&

@@ -98,7 +98,7 @@ class Edit extends Action
             }
 
             $this->dataPersistor->set('order', $data);
-            return $resultRedirect->setPath('*/*/', ['id' => $id]);
+            //return $resultRedirect->setPath('*/*/', ['id' => $id]);
         }
         return $resultRedirect->setPath('*/*/');
     }

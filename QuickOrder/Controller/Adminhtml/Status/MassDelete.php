@@ -52,7 +52,7 @@ class MassDelete extends Action
         $ids = $this->getRequest()->getParam('selected');
 
         if (empty($ids)) {
-            $this->messageManager->addWarningMessage(__("Please select ids"));
+            $this->messageManager->addWarningMessage(__("Please select status"));
             return $this->_redirect('*/*/');
         }
 
@@ -64,7 +64,7 @@ class MassDelete extends Action
             }
         }
 
-        $this->messageManager->addSuccessMessage(sprintf("Items %s was deleted", implode(',', $ids)));
+        $this->messageManager->addSuccessMessage(sprintf("Status %s was deleted", implode(',', $ids)));
         $this->_redirect('*/*/');
     }
 }
