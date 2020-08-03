@@ -157,7 +157,9 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
 </script>
 
 <div class="modal" id="quick-order-form" style="display:none;">
-    <form id="popup-modal-info" name="customerInfo">
+    <form id="popup-modal-info"
+          name="customerInfo"
+          data-product-sku="<?= $block->escapeHtmlAttr($_product->getSku()) ?>">
         <h2>Write your information</h2>
         <p><label for="customerName">Name: </label>
             <input type="text" name="customerName" id="customerName" placeholder="Your name" max="32" required></p>
